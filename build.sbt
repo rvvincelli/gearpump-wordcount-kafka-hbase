@@ -8,7 +8,7 @@ version := "1.0"
 
 scalaVersion := "2.11.5"
 
-scalacOptions ++= Seq("-deprecation", "-Ylog-classpath")
+scalacOptions ++= Seq("-deprecation")
 
 resolvers ++= Seq(
   "Sonatype releases" at "http://oss.sonatype.org/content/repositories/releases/",
@@ -36,7 +36,7 @@ mergeStrategy in assembly := {
   case s if s endsWith "geardefault.conf"                   => MergeStrategy.first
   case s if s endsWith "log4j.properties"                   => MergeStrategy.discard
   case s if s endsWith "DEPENDENCIES"                       => MergeStrategy.discard
-  case x 					     =>
+  case x 					     	    =>
     val oldStrategy = (mergeStrategy in assembly).value
     oldStrategy(x)
 }
