@@ -25,10 +25,10 @@ val gearpumpVersion = "0.7.5"
 val hadoopVersion = "2.6.0-cdh5.4.2"
 
 libraryDependencies ++= Seq(
-  "com.github.intel-hadoop"                %  "gearpump-core_2.11"         % gearpumpVersion,
-  "com.github.intel-hadoop"                %  "gearpump-streaming_2.11"    % gearpumpVersion,
-  "com.github.intel-hadoop"                %% "gearpump-external-kafka"    % gearpumpVersion,
-  "com.github.intel-hadoop"                %% "gearpump-external-hbase"    % gearpumpVersion,
+  "com.github.intel-hadoop"                %  "gearpump-core_2.11"         % gearpumpVersion	withSources(),
+  "com.github.intel-hadoop"                %  "gearpump-streaming_2.11"    % gearpumpVersion	withSources(),
+  "com.github.intel-hadoop"                %% "gearpump-external-kafka"    % gearpumpVersion	withSources(),
+  "com.github.intel-hadoop"                %% "gearpump-external-hbase"    % gearpumpVersion	withSources(),
   "org.apache.hadoop"			   %  "hadoop-common"		   % hadoopVersion	% "provided" //this shouldn't be needed but it won't compile without - library bug ?
 )
 

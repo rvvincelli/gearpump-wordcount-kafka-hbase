@@ -9,7 +9,7 @@ class Split(taskContext : TaskContext, conf: UserConfig) extends Task(taskContex
   import taskContext.{output, self}
 
   override def onNext(msg : Message) : Unit = {
-    msg.msg.asInstanceOf[String].lines.foreach { line =>
+    new String(msg.msg.asInstanceOf[Array[Byte]]).lines.foreach { line =>
       line.split("[\\s]+").filter(_.nonEmpty).foreach { msg =>
         output(new Message(msg, System.currentTimeMillis()))
       }

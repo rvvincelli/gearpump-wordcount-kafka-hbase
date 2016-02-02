@@ -10,7 +10,7 @@ import io.gearpump.util.Graph.Node
 import io.gearpump.util.{AkkaApp, Graph, LogUtil}
 import org.slf4j.Logger
 
-object GearpumpWordcountKafkaHBaseApp extends AkkaApp with ArgumentsParser with KafkaSourceProvider with HBaseSinkProvider {
+object GearpumpWordcountKafkaHBaseApp extends AkkaApp with ArgumentsParser with KafkaSourceProvider with HBaseSinkProvider with KafkaConfProvider {
   
   implicit def actorSystem = ActorSystem()
 

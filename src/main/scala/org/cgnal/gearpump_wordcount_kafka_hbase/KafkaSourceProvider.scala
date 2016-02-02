@@ -4,17 +4,17 @@ import akka.actor.ActorSystem
 import io.gearpump.streaming.kafka.{KafkaSource, KafkaStorageFactory}
 import io.gearpump.streaming.source.DataSourceProcessor
 
-trait KafkaSourceProvider {
+trait KafkaSourceProvider { self: KafkaConfProvider =>
 
   implicit def actorSystem: ActorSystem
   
-  private val zookeepers = "fsbovcdhi01.fondiaria-sai.it:2181"
-  private val brokers = "fsbovcdhi01.fondiaria-sai.it:9092"
+  private lazy val zookeepers = s"$zookeeperHost:$zookeeperPort"
+  private lazy val brokers = s"$brokerHost:$brokerPort"
   
-  private val offsetStorageFactory = new KafkaStorageFactory(zookeepers, brokers)
+  private lazy val offsetStorageFactory = new KafkaStorageFactory(zookeepers, brokers)
 
-  private val kafkaSource = new KafkaSource("loremipsum", zookeepers, offsetStorageFactory)
+  private lazy val kafkaSource = new KafkaSource("randomipsum", zookeepers, offsetStorageFactory)
   
-  protected val kafkaSourceProcessor = DataSourceProcessor(kafkaSource, 1)
+  protected lazy val kafkaSourceProcessor = DataSourceProcessor(kafkaSource, 1)
   
 }
